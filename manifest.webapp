@@ -1,0 +1,16 @@
+{
+  "name": "Coin flip",
+  "description": "App to help making decisions",
+  "version": "1.0.0",
+  "launch_path": "/tests/coinflip/index.html",
+  "fullscreen": "true",
+  "appcache_path": "/tests/coinflip/coinflip.appcache",
+  "icons": {
+    "128": "/tests/coinflip/images/icon-128.png"
+  },
+  "developer": {
+    "name": "Lajos Koszti",
+    "url": "http://ajnasz.hu"
+  },
+  "default_locale": "en"
+}

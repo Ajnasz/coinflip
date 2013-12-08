@@ -1,0 +1,8 @@
+CACHE MANIFEST
+# v1 - 2013-12-08
+style.css
+script.js
+images/dime-coin-head.png
+images/dime-coin-tail.png
+FALLBACK:
+/ index.html

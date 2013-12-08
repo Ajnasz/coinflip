@@ -1,0 +1,145 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+}
+
+#Surface {
+    padding: 10px;
+    -webkit-transform: translateZ(0);
+       -moz-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+            transform: translateZ(0);
+}
+
+#Coin {
+    height: 100px;
+    width: 100px;
+    position: relative;
+    margin: auto;
+}
+
+.coin-side {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.coin-side {
+    -webkit-backface-visibility: hidden;
+       -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+            backface-visibility: hidden;
+}
+
+#Coin {
+    -webkit-perspective: 1000px;
+       -moz-perspective: 1000px;
+        -ms-perspective: 1000px;
+            perspective: 1000px;
+
+	-webkit-transform-style: preserve-3d;
+	   -moz-transform-style: preserve-3d;
+	    -ms-transform-style: preserve-3d;
+	        transform-style: preserve-3d;
+}
+
+#Coin.head {
+    -webkit-transition: -webkit-transform 3s, width 0.5s, height 0.5s;
+       -moz-transition: -moz-transform 3s, width 0.5s, height 0.5s;
+        -ms-transition: -ms-transform 3s, width 0.5s, height 0.5s;
+            transition: transform 3s, width 0.5s, height 0.5s;
+
+    -webkit-transform: rotateY(1620deg);
+       -moz-transform: rotateY(1620deg);
+        -ms-transform: rotateY(1620deg);
+            transform: rotateY(1620deg);
+}
+#Coin.tail {
+    -webkit-transition: -webkit-transform 3s;
+       -moz-transition: -moz-transform 3s;
+        -ms-transition: -ms-transform 3s;
+            transition: transform 3s;
+
+
+    -webkit-transform: rotateY(1440deg);
+       -moz-transform: rotateY(1440deg);
+        -ms-transform: rotateY(1440deg);
+            transform: rotateY(1440deg);
+}
+#CoinHead {
+    -webkit-transform: rotateY(180deg) rotateX(0deg);
+       -moz-transform: rotateY(180deg) rotateX(0deg);
+        -ms-transform: rotateY(180deg) rotateX(0deg);
+            transform: rotateY(180deg) rotateX(0deg);
+}
+
+.coin-side {
+    background-size: 100% 100%;
+    border-radius: 250px;
+}
+
+#CoinTail {
+    background-image: url(images/dime-coin-tail.png);
+}
+
+#CoinHead {
+    background-image: url(images/dime-coin-head.png);
+}
+
+@media (max-height: 320px) {
+    #Coin {
+        height: 80px;
+        width: 80px;
+    }
+}
+@media (min-width: 150px) and (min-height: 150px) {
+    #Coin {
+        height: 100px;
+        width: 100px;
+    }
+}
+@media (min-width: 250px) and (min-height: 250px) {
+    #Coin {
+        height: 200px;
+        width: 200px;
+    }
+}
+@media (min-width: 350px) and (min-height: 350px) {
+    #Coin {
+        height: 300px;
+        width: 300px;
+    }
+}
+@media (min-width: 450px) and (min-height: 450px) {
+    #Coin {
+        height: 400px;
+        width: 400px;
+    }
+}
+@media (min-width: 550px) and (min-height: 550px) {
+    #Coin {
+        height: 500px;
+        width: 500px;
+    }
+}
+@media (min-width: 650px) and (min-height: 650px) {
+    #Coin {
+        height: 600px;
+        width: 600px;
+    }
+}
+@media (min-width: 750px) and (min-height: 750px) {
+    #Coin {
+        height: 700px;
+        width: 700px;
+    }
+}
+@media (min-width: 1000px) and (min-height: 1000px) {
+    #Coin {
+        height: 950px;
+        width: 950px;
+    }
+}
