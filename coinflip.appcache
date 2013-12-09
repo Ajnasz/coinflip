@@ -1,8 +1,12 @@
 CACHE MANIFEST
-# v1 - 2013-12-09 11:28
+# v1 - 2013-12-09 13:38
 style.css
 script.js
 images/dime-coin-head.png
 images/dime-coin-tail.png
+
+NETWORK:
+*
+
 FALLBACK:
-/ index.html
+/ offline.html
