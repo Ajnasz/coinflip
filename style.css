@@ -105,11 +105,11 @@ body {
 }
 
 #CoinTail {
-    background-image: url(images/dime-coin-tail.png);
+    background-image: url(images/coins/tails/dime-coin-tail.png);
 }
 
 #CoinHead {
-    background-image: url(images/dime-coin-head.png);
+    background-image: url(images/coins/heads/dime-coin-head.png);
 }
 
 @media (max-height: 320px) {

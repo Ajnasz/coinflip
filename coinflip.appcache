@@ -2,11 +2,15 @@ CACHE MANIFEST
 # v1 - 2013-12-09 13:38
 style.css
 script.js
-images/dime-coin-head.png
-images/dime-coin-tail.png
+images/coins/heads/dime-coin-head.png
+images/coins/tails/dime-coin-tail.png
 
+# Download everything if online
 NETWORK:
 *
 
+# Load this page if no content
 FALLBACK:
 / offline.html
+images/coins/heads/ images/coins/heads/dime-coin-head.png
+images/coins/tails/ images/coins/tails/dime-coin-tail.png
