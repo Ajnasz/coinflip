@@ -15,6 +15,14 @@ window.addEventListener('load', function () {
 
     function changeClasses(add) {
         var coin = byId('Coin');
+        if (coin.classList.contains('head')) {
+            coin.classList.add('start-head');
+            coin.classList.remove('start-tail');
+        } else {
+            coin.classList.add('start-tail');
+            coin.classList.remove('start-head');
+        }
+
         coin.classList.remove('head');
         coin.classList.remove('tail');
 
