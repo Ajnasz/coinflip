@@ -1,6 +1,7 @@
 /*jslint browser: true*/
-window.addEventListener('load', function () {
+(function () {
     "use strict";
+    var coin;
     function byId(id) {
         return document.getElementById(id);
     }
@@ -13,8 +14,8 @@ window.addEventListener('load', function () {
         listen(byId(elem), 'click', cb);
     }
 
-    function changeClasses(add) {
-        var coin = byId('Coin');
+    function setStartState() {
+
         if (coin.classList.contains('head')) {
             coin.classList.add('start-head');
             coin.classList.remove('start-tail');
@@ -22,10 +23,16 @@ window.addEventListener('load', function () {
             coin.classList.add('start-tail');
             coin.classList.remove('start-head');
         }
+    }
 
+    function resetCoin() {
         coin.classList.remove('head');
         coin.classList.remove('tail');
+    }
 
+    function changeClasses(add) {
+        setStartState();
+        resetCoin();
         setTimeout(function () {
             coin.classList.add(add);
         }, 100);
@@ -39,14 +46,23 @@ window.addEventListener('load', function () {
         changeClasses('head');
     }
 
-    onClick('Surface', function () {
-        var rand = Math.floor(Math.random() * 10) + 1;
+    function isHead() {
+        var rand = String(Math.floor(Math.random() * 10));
 
-        if (rand % 2) {
-            tail();
-        } else {
+        return Boolean(rand % 2);
+    }
+
+    function onSurfaceClick() {
+        if (isHead()) {
             head();
+        } else {
+            tail();
         }
-    });
+    }
 
-}, false);
+    window.addEventListener('load', function () {
+        coin = byId('Coin');
+        onClick('Surface', onSurfaceClick);
+    }, false);
+
+}());
