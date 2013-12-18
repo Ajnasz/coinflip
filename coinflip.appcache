@@ -1,9 +1,10 @@
 CACHE MANIFEST
-# v1 - 2013-12-09 13:38
+# v1.0.0 - 2013-12-17 22:44
 style.css
 script.js
 images/coins/heads/dime-coin-head.png
 images/coins/tails/dime-coin-tail.png
+sounds/CoinFlip.ogg
 
 # Download everything if online
 NETWORK:
