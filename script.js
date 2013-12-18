@@ -1,7 +1,7 @@
 /*jslint browser: true*/
 (function () {
     "use strict";
-    var coin;
+    var coin, animating;
     function byId(id) {
         return document.getElementById(id);
     }
@@ -12,6 +12,23 @@
 
     function onClick(elem, cb) {
         listen(byId(elem), 'click', cb);
+    }
+
+    function onTouchStart(elem, cb) {
+        listen(byId(elem), 'touchend', cb);
+    }
+
+    function onTransitionEnd(elem, cb) {
+        [
+            'transitionend',
+            'moztransitionend',
+            'webkitTransitionEnd',
+            'MSTransitionEnd',
+            'oTransitionEnd',
+            'otransitionend'
+        ].forEach(function (ev) {
+            listen(byId(elem), ev, cb);
+        });
     }
 
     function setStartState() {
@@ -52,17 +69,33 @@
         return Boolean(rand % 2);
     }
 
-    function onSurfaceClick() {
+    animating = false;
+
+    function onSurfaceClick(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (animating) {
+            return;
+        }
+
+        byId('CoinFlipSound').play();
         if (isHead()) {
             head();
         } else {
             tail();
         }
+        animating = true;
     }
 
-    window.addEventListener('load', function () {
+    function onSurfaceTransitionEnd(e) {
+        animating = false;
+    }
+
+    listen(window, 'load', function () {
         coin = byId('Coin');
         onClick('Surface', onSurfaceClick);
+        onTouchStart('Surface', onSurfaceClick);
+        onTransitionEnd('Surface', onSurfaceTransitionEnd);
     }, false);
 
 }());
