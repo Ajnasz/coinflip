@@ -31,6 +31,19 @@
         });
     }
 
+    function onAnimationEnd(elem, cb) {
+        [
+            'animationend',
+            'mozanimationend',
+            'webkitAnimationEnd',
+            'MSAnimationEnd',
+            'oAnimationEnd',
+            'oanimationend'
+        ].forEach(function (ev) {
+            listen(byId(elem), ev, cb);
+        });
+    }
+
     function setStartState() {
 
         if (coin.classList.contains('head')) {
@@ -96,6 +109,7 @@
         onClick('Surface', onSurfaceClick);
         onTouchStart('Surface', onSurfaceClick);
         onTransitionEnd('Surface', onSurfaceTransitionEnd);
+        onAnimationEnd('Coin', onSurfaceTransitionEnd);
     }, false);
 
 }());

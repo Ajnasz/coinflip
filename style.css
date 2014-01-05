@@ -1,3 +1,143 @@
+@keyframes head_from_tail {
+    0% {
+        transform: rotateX(0deg) scale(1, 1);
+    }
+
+    60% {
+        transform: rotateX(1000deg) scale(2, 2);
+    }
+
+    75% {
+        transform: rotateX(1300deg) scale(2, 2);
+    }
+
+    100% {
+        transform: rotateX(1620deg) scale(1, 1);
+    }
+}
+@keyframes tail_from_tail {
+    0% {
+        transform: rotateX(0deg) scale(1, 1);
+    }
+
+    60% {
+        transform: rotateX(900deg) scale(2, 2);
+    }
+
+    75% {
+        transform: rotateX(1300deg) scale(2, 2);
+    }
+
+    100% {
+        transform: rotateX(1440deg) scale(1, 1);
+    }
+}
+
+@-webkit-keyframes head_from_tail {
+    0% {
+        -webkit-transform: rotateX(0deg) scale(1, 1);
+    }
+
+    60% {
+        -webkit-transform: rotateX(1000deg) scale(2, 2);
+    }
+
+    75% {
+        transform: rotateX(1300deg) scale(2, 2);
+    }
+
+    100% {
+        -webkit-transform: rotateX(1620deg) scale(1, 1);
+    }
+}
+@-webkit-keyframes tail_from_tail {
+    0% {
+        -webkit-transform: rotateX(0deg) scale(1, 1);
+    }
+
+    60% {
+        -webkit-transform: rotateX(900deg) scale(2, 2);
+    }
+
+    75% {
+        transform: rotateX(1300deg) scale(2, 2);
+    }
+
+    100% {
+        -webkit-transform: rotateX(1440deg) scale(1, 1);
+    }
+}
+
+@keyframes head_from_head {
+    0% {
+        transform: rotateX(180deg) scale(1, 1);
+    }
+
+    60% {
+        transform: rotateX(1000deg) scale(2, 2);
+    }
+
+    75% {
+        transform: rotateX(1300deg) scale(2, 2);
+    }
+
+    100% {
+        transform: rotateX(1620deg) scale(1, 1);
+    }
+}
+@keyframes tail_from_head {
+    0% {
+        transform: rotateX(180deg) scale(1, 1);
+    }
+
+    60% {
+        transform: rotateX(900deg) scale(2, 2);
+    }
+
+    75% {
+        transform: rotateX(1300deg) scale(2, 2);
+    }
+
+    100% {
+        transform: rotateX(1800deg) scale(1, 1);
+    }
+}
+
+@-webkit-keyframes head_from_head {
+    0% {
+        -webkit-transform: rotateX(180deg) scale(1, 1);
+    }
+
+    60% {
+        -webkit-transform: rotateX(1000deg) scale(2, 2);
+    }
+
+    75% {
+        transform: rotateX(1300deg) scale(2, 2);
+    }
+
+    100% {
+        -webkit-transform: rotateX(1620deg) scale(1, 1);
+    }
+}
+@-webkit-keyframes tail_from_head {
+    0% {
+        -webkit-transform: rotateX(180deg) scale(1, 1);
+    }
+
+    60% {
+        -webkit-transform: rotateX(900deg) scale(2, 2);
+    }
+
+    75% {
+        transform: rotateX(1300deg) scale(2, 2);
+    }
+
+    100% {
+        -webkit-transform: rotateX(1800deg) scale(1, 1);
+    }
+}
+
 #Surface {
     -webkit-transform: translateZ(0);
        -moz-transform: translateZ(0);
@@ -44,27 +184,44 @@
             transform: rotateX(180deg);
 }
 #Coin.head {
+    /*
     -webkit-transition: -webkit-transform 2s, width 0.5s, height 0.5s;
        -moz-transition: -moz-transform 2s, width 0.5s, height 0.5s;
         -ms-transition: -ms-transform 2s, width 0.5s, height 0.5s;
             transition: transform 2s, width 0.5s, height 0.5s;
+    */
 
     -webkit-transform: rotateX(1620deg);
        -moz-transform: rotateX(1620deg);
         -ms-transform: rotateX(1620deg);
             transform: rotateX(1620deg);
+
+    -webkit-animation: head_from_tail 2s linear;
+    animation: head_from_tail 2s linear;
 }
 #Coin.tail {
+    /*
     -webkit-transition: -webkit-transform 2s;
        -moz-transition: -moz-transform 2s;
         -ms-transition: -ms-transform 2s;
             transition: transform 2s;
+            */
 
 
     -webkit-transform: rotateX(1440deg);
        -moz-transform: rotateX(1440deg);
         -ms-transform: rotateX(1440deg);
             transform: rotateX(1440deg);
+    -webkit-animation: tail_from_tail 2s linear;
+    animation: tail_from_tail 2s linear;
+}
+#Coin.start-head.head {
+    -webkit-animation: head_from_head 2s linear;
+    animation: head_from_head 2s linear;
+}
+#Coin.start-head.tail {
+    -webkit-animation: tail_from_head 2s linear;
+    animation: tail_from_head 2s linear;
 }
 #CoinHead {
     -webkit-transform: rotateX(180deg);
@@ -81,6 +238,7 @@ body {
 
 #Surface {
     position: absolute;
+    overflow: hidden;
     top: 0;
     bottom: 0;
     left: 0;
@@ -136,57 +294,57 @@ body {
 }
 @media (min-width: 250px) and (min-height: 250px) {
     #Coin {
-        height: 200px;
-        width: 200px;
-        margin-top: -100px;
-        margin-left: -100px;
+        height: 150px;
+        width: 150px;
+        margin-top: -75px;
+        margin-left: -75px;
     }
 }
 @media (min-width: 350px) and (min-height: 350px) {
     #Coin {
-        height: 300px;
-        width: 300px;
-        margin-top: -150px;
-        margin-left: -150px;
+        height: 250px;
+        width: 250px;
+        margin-top: -125px;
+        margin-left: -125px;
     }
 }
 @media (min-width: 450px) and (min-height: 450px) {
     #Coin {
-        height: 400px;
-        width: 400px;
-        margin-top: -200px;
-        margin-left: -200px;
+        height: 350px;
+        width: 350px;
+        margin-top: -175px;
+        margin-left: -175px;
     }
 }
 @media (min-width: 550px) and (min-height: 550px) {
     #Coin {
-        height: 500px;
-        width: 500px;
-        margin-top: -250px;
-        margin-left: -250px;
+        height: 450px;
+        width: 450px;
+        margin-top: -225px;
+        margin-left: -225px;
     }
 }
 @media (min-width: 650px) and (min-height: 650px) {
     #Coin {
-        height: 600px;
-        width: 600px;
-        margin-top: -300px;
-        margin-left: -300px;
+        height: 550px;
+        width: 550px;
+        margin-top: -275px;
+        margin-left: -275px;
     }
 }
 @media (min-width: 750px) and (min-height: 750px) {
     #Coin {
-        height: 700px;
-        width: 700px;
-        margin-top: -350px;
-        margin-left: -350px;
+        height: 650px;
+        width: 650px;
+        margin-top: -325px;
+        margin-left: -325px;
     }
 }
 @media (min-width: 1000px) and (min-height: 1000px) {
     #Coin {
-        height: 950px;
-        width: 950px;
-        margin-top: -475px;
-        margin-left: -475px;
+        height: 900px;
+        width: 900px;
+        margin-top: -450px;
+        margin-left: -450px;
     }
 }
