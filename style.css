@@ -3,16 +3,16 @@
         transform: rotateX(0deg) scale(1, 1);
     }
 
-    60% {
-        transform: rotateX(1000deg) scale(2, 2);
+    40% {
+        transform: rotateX(640deg) scale(1.8, 1.8);
     }
 
     75% {
-        transform: rotateX(1300deg) scale(2, 2);
+        transform: rotateX(940deg) scale(2, 2);
     }
 
     100% {
-        transform: rotateX(1620deg) scale(1, 1);
+        transform: rotateX(1260deg) scale(1, 1);
     }
 }
 @keyframes tail_from_tail {
@@ -20,16 +20,16 @@
         transform: rotateX(0deg) scale(1, 1);
     }
 
-    60% {
-        transform: rotateX(900deg) scale(2, 2);
+    40% {
+        transform: rotateX(540deg) scale(1.8, 1.8);
     }
 
     75% {
-        transform: rotateX(1300deg) scale(2, 2);
+        transform: rotateX(940deg) scale(2, 2);
     }
 
     100% {
-        transform: rotateX(1440deg) scale(1, 1);
+        transform: rotateX(1080deg) scale(1, 1);
     }
 }
 
@@ -38,16 +38,16 @@
         -webkit-transform: rotateX(0deg) scale(1, 1);
     }
 
-    60% {
-        -webkit-transform: rotateX(1000deg) scale(2, 2);
+    40% {
+        -webkit-transform: rotateX(640deg) scale(1.8, 1.8);
     }
 
     75% {
-        transform: rotateX(1300deg) scale(2, 2);
+        -webkit-transform: rotateX(940deg) scale(2, 2);
     }
 
     100% {
-        -webkit-transform: rotateX(1620deg) scale(1, 1);
+        -webkit-transform: rotateX(1260deg) scale(1, 1);
     }
 }
 @-webkit-keyframes tail_from_tail {
@@ -55,16 +55,16 @@
         -webkit-transform: rotateX(0deg) scale(1, 1);
     }
 
-    60% {
-        -webkit-transform: rotateX(900deg) scale(2, 2);
+    40% {
+        -webkit-transform: rotateX(540deg) scale(1.8, 1.8);
     }
 
     75% {
-        transform: rotateX(1300deg) scale(2, 2);
+        transform: rotateX(940deg) scale(2, 2);
     }
 
     100% {
-        -webkit-transform: rotateX(1440deg) scale(1, 1);
+        -webkit-transform: rotateX(1080deg) scale(1, 1);
     }
 }
 
@@ -73,16 +73,16 @@
         transform: rotateX(180deg) scale(1, 1);
     }
 
-    60% {
-        transform: rotateX(1000deg) scale(2, 2);
+    40% {
+        transform: rotateX(640deg) scale(1.8, 1.8);
     }
 
     75% {
-        transform: rotateX(1300deg) scale(2, 2);
+        transform: rotateX(940deg) scale(2, 2);
     }
 
     100% {
-        transform: rotateX(1620deg) scale(1, 1);
+        transform: rotateX(1260deg) scale(1, 1);
     }
 }
 @keyframes tail_from_head {
@@ -90,16 +90,16 @@
         transform: rotateX(180deg) scale(1, 1);
     }
 
-    60% {
-        transform: rotateX(900deg) scale(2, 2);
+    40% {
+        transform: rotateX(640deg) scale(1.8, 1.8);
     }
 
     75% {
-        transform: rotateX(1300deg) scale(2, 2);
+        transform: rotateX(940deg) scale(2, 2);
     }
 
     100% {
-        transform: rotateX(1800deg) scale(1, 1);
+        transform: rotateX(1440deg) scale(1, 1);
     }
 }
 
@@ -108,16 +108,16 @@
         -webkit-transform: rotateX(180deg) scale(1, 1);
     }
 
-    60% {
-        -webkit-transform: rotateX(1000deg) scale(2, 2);
+    40% {
+        -webkit-transform: rotateX(640deg) scale(1.8, 1.8);
     }
 
     75% {
-        transform: rotateX(1300deg) scale(2, 2);
+        -webkit-transform: rotateX(940deg) scale(2, 2);
     }
 
     100% {
-        -webkit-transform: rotateX(1620deg) scale(1, 1);
+        -webkit-transform: rotateX(1260deg) scale(1, 1);
     }
 }
 @-webkit-keyframes tail_from_head {
@@ -125,20 +125,20 @@
         -webkit-transform: rotateX(180deg) scale(1, 1);
     }
 
-    60% {
-        -webkit-transform: rotateX(900deg) scale(2, 2);
+    40% {
+        -webkit-transform: rotateX(540deg) scale(1.8, 1.8);
     }
 
     75% {
-        transform: rotateX(1300deg) scale(2, 2);
+        -webkit-transform: rotateX(940deg) scale(2, 2);
     }
 
     100% {
-        -webkit-transform: rotateX(1800deg) scale(1, 1);
+        -webkit-transform: rotateX(1440deg) scale(1, 1);
     }
 }
 
-#Surface {
+#Coin {
     -webkit-transform: translateZ(0);
        -moz-transform: translateZ(0);
         -ms-transform: translateZ(0);
@@ -153,22 +153,10 @@
 }
 
 #Coin {
-    -webkit-perspective: 1000px;
-       -moz-perspective: 1000px;
-        -ms-perspective: 1000px;
-            perspective: 1000px;
-
-	-webkit-transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
 	   -moz-transform-style: preserve-3d;
 	    -ms-transform-style: preserve-3d;
 	        transform-style: preserve-3d;
-}
-
-#Coin.start-head {
-    -webkit-transform: rotateX(0deg);
-       -moz-transform: rotateX(0deg);
-        -ms-transform: rotateX(0deg);
-            transform: rotateX(0deg);
 }
 
 #Coin.start-tail {
@@ -191,10 +179,10 @@
             transition: transform 2s, width 0.5s, height 0.5s;
     */
 
-    -webkit-transform: rotateX(1620deg);
-       -moz-transform: rotateX(1620deg);
-        -ms-transform: rotateX(1620deg);
-            transform: rotateX(1620deg);
+    -webkit-transform: rotateX(180deg);
+       -moz-transform: rotateX(180deg);
+        -ms-transform: rotateX(180deg);
+            transform: rotateX(180deg);
 
     -webkit-animation: head_from_tail 2s linear;
     animation: head_from_tail 2s linear;
@@ -207,11 +195,11 @@
             transition: transform 2s;
             */
 
+    -webkit-transform: rotateX(0deg);
+       -moz-transform: rotateX(0deg);
+        -ms-transform: rotateX(0deg);
+            transform: rotateX(0deg);
 
-    -webkit-transform: rotateX(1440deg);
-       -moz-transform: rotateX(1440deg);
-        -ms-transform: rotateX(1440deg);
-            transform: rotateX(1440deg);
     -webkit-animation: tail_from_tail 2s linear;
     animation: tail_from_tail 2s linear;
 }
@@ -247,8 +235,6 @@ body {
 }
 
 #Coin {
-    height: 100px;
-    width: 100px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -265,7 +251,7 @@ body {
 
 .coin-side {
     background-size: 100% 100%;
-    border-radius: 250px;
+    border-radius: 50%;
 }
 
 #CoinTail {
@@ -276,15 +262,15 @@ body {
     background-image: url(images/coins/heads/dime-coin-head.png);
 }
 
-@media (max-height: 320px) {
+@media (min-width: 150px) and (min-height: 150px) {
     #Coin {
-        height: 80px;
-        width: 80px;
-        margin-top: -40px;
-        margin-left: -40px;
+        height: 50px;
+        width: 50px;
+        margin-top: -25px;
+        margin-left: -25px;
     }
 }
-@media (min-width: 150px) and (min-height: 150px) {
+@media (min-width: 250px) and (min-height: 250px) {
     #Coin {
         height: 100px;
         width: 100px;
@@ -292,59 +278,51 @@ body {
         margin-left: -50px;
     }
 }
-@media (min-width: 250px) and (min-height: 250px) {
-    #Coin {
-        height: 150px;
-        width: 150px;
-        margin-top: -75px;
-        margin-left: -75px;
-    }
-}
 @media (min-width: 350px) and (min-height: 350px) {
     #Coin {
-        height: 250px;
-        width: 250px;
-        margin-top: -125px;
-        margin-left: -125px;
+        height: 200px;
+        width: 200px;
+        margin-top: -100px;
+        margin-left: -100px;
     }
 }
 @media (min-width: 450px) and (min-height: 450px) {
     #Coin {
-        height: 350px;
-        width: 350px;
-        margin-top: -175px;
-        margin-left: -175px;
+        height: 300px;
+        width: 300px;
+        margin-top: -150px;
+        margin-left: -150px;
     }
 }
 @media (min-width: 550px) and (min-height: 550px) {
     #Coin {
-        height: 450px;
-        width: 450px;
-        margin-top: -225px;
-        margin-left: -225px;
+        height: 400px;
+        width: 400px;
+        margin-top: -200px;
+        margin-left: -200px;
     }
 }
 @media (min-width: 650px) and (min-height: 650px) {
     #Coin {
-        height: 550px;
-        width: 550px;
-        margin-top: -275px;
-        margin-left: -275px;
+        height: 500px;
+        width: 500px;
+        margin-top: -250px;
+        margin-left: -250px;
     }
 }
 @media (min-width: 750px) and (min-height: 750px) {
     #Coin {
-        height: 650px;
-        width: 650px;
-        margin-top: -325px;
-        margin-left: -325px;
+        height: 600px;
+        width: 600px;
+        margin-top: -300px;
+        margin-left: -300px;
     }
 }
 @media (min-width: 1000px) and (min-height: 1000px) {
     #Coin {
-        height: 900px;
-        width: 900px;
-        margin-top: -450px;
-        margin-left: -450px;
+        height: 850px;
+        width: 850px;
+        margin-top: -425px;
+        margin-left: -425px;
     }
 }
