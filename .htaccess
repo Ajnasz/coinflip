@@ -1,6 +1,0 @@
-<Files *.appcache>
-    Header set Cache-Control "no-cache"
-    Header set Expires "Thu, 01 Jan 1970 00:00:01 GMT"
-    Header unset ETag
-    Header unset X-Pad
-</Files>
