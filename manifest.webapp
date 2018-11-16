@@ -1,7 +1,7 @@
 {
   "name": "Coin flip",
   "description": "App to help making decisions",
-  "version": "1.1.14",
+  "version": "1.1.15",
   "launch_path": "/index.html",
   "fullscreen": "true",
   "appcache_path": "/coinflip.appcache",
