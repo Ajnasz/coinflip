@@ -46,7 +46,6 @@
     }
 
     function setStartState() {
-
         if (coin.classList.contains('head')) {
             coin.classList.add('start-head');
             coin.classList.remove('start-tail');
