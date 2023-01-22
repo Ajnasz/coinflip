@@ -172,11 +172,11 @@ body {
 }
 
 #CoinTail {
-    background-image: url(images/coins/tails/dime-coin-tail.png);
+    background-image: url(images/coins/tails/dime-coin-tail.webp), url(images/coins/tails/dime-coin-tail.png);
 }
 
 #CoinHead {
-    background-image: url(images/coins/heads/dime-coin-head.png);
+    background-image: url(images/coins/heads/dime-coin-head.webp), url(images/coins/heads/dime-coin-head.png);
 }
 
 @media (min-width: 150px) and (min-height: 150px) {
