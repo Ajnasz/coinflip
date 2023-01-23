@@ -22,19 +22,6 @@
         listen(byId(elem), 'touchend', cb);
     }
 
-    function onTransitionEnd(elem, cb) {
-        [
-            'transitionend',
-            'moztransitionend',
-            'webkitTransitionEnd',
-            'MSTransitionEnd',
-            'oTransitionEnd',
-            'otransitionend'
-        ].forEach(function (ev) {
-            listen(byId(elem), ev, cb);
-        });
-    }
-
     function onAnimationEnd(elem, cb) {
         [
             'animationend',
@@ -145,5 +132,4 @@
         onTouchStart('Surface', onSurfaceClick);
         onAnimationEnd('Coin', onAnimationEndCb);
     }, false);
-
 }());
