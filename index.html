@@ -15,12 +15,21 @@
 <body>
 <div id="Surface" tabindex="0">
     <div id="Coin">
-        <div class="coin-side" id="CoinHead"></div>
-        <div class="coin-side" id="CoinTail"></div>
+        <div class="coin-side coin-head" id="CoinHead"></div>
+        <div class="coin-side coin-tail" id="CoinTail"></div>
         <audio id="CoinFlipSound" preload="auto">
             <source src="sounds/CoinFlip.ogg" type="audio/ogg" />
         </audio>
     </div>
-</div>
+    <div id="History">
+        <div class="coin" id="HeadCount">
+          <div class="coin-side coin-head"></div>
+          <div class="coin-count">0</div>
+        </div>
+        <div class="coin" id="TailCount">
+          <div class="coin-side coin-tail"></div>
+          <div class="coin-count">0</div>
+        </div>
+    </div>
 </body>
 </html>

@@ -153,7 +153,7 @@ body {
 
 #Coin {
     position: absolute;
-    top: 50%;
+    top: calc(50% - 10vh);
     left: 50%;
 }
 
@@ -171,7 +171,7 @@ body {
     border-radius: 50%;
 }
 
-#CoinTail {
+.coin-tail {
     background-image:
     url(images/coins/tails/dime-coin-tail.png);
     background-image: image-set(
@@ -180,12 +180,35 @@ body {
     );
 }
 
-#CoinHead {
+.coin-head {
     background-image: url(images/coins/heads/dime-coin-head.png);
     background-image: image-set(
       url(images/coins/heads/dime-coin-head.webp),
       url(images/coins/heads/dime-coin-head.png)
     );
+}
+
+#History {
+  background-color: #252525;
+  padding: 5px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 10vh;
+
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#History .coin {
+  text-align: center;
+  color: #fff;
+  font-family: sans-serif;
+}
+#History .coin-side {
+  width: calc(10vh * 0.7);
+  height: calc(10vh * 0.7);
+  position: static;
 }
 
 @media (min-width: 150px) and (min-height: 150px) {

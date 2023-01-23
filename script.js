@@ -2,6 +2,7 @@
 (function () {
     "use strict";
     var coin, animating;
+    const state = { heads: 0, tails: 0};
 
     function byId(id) {
         return document.getElementById(id);
@@ -84,8 +85,18 @@
 
     animating = false;
 
+    function updateState() {
+        byId('HeadCount').querySelector('.coin-count').innerText = state.heads;
+        byId('TailCount').querySelector('.coin-count').innerText = state.tails;
+    }
+
     function enableFlip() {
         animating = false;
+    }
+
+    function onAnimationEndCb() {
+      enableFlip();
+      updateState();
     }
 
     function disableFlip() {
@@ -103,13 +114,17 @@
             return;
         }
 
-        byId('CoinFlipSound').play();
 
-        if (isHead()) {
+        const res = isHead();
+
+        if (res) {
+            state.heads += 1;
             head();
         } else {
+            state.tails += 1;
             tail();
         }
+
         disableFlip();
     }
 
@@ -117,8 +132,7 @@
         coin = byId('Coin');
         onClick('Surface', onSurfaceClick);
         onTouchStart('Surface', onSurfaceClick);
-        //  onTransitionEnd('Surface', enableFlip);
-        onAnimationEnd('Coin', enableFlip);
+        onAnimationEnd('Coin', onAnimationEndCb);
     }, false);
 
 }());
