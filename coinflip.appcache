@@ -1,11 +1,11 @@
 CACHE MANIFEST
-# V1.1.18 - 2023-01-22 16:08
+# V1.1.19 - 2023-01-23 08:31
 style.css
 script.js
 images/coins/heads/dime-coin-head.webp
 images/coins/tails/dime-coin-tail.webp
-images/coins/heads/dime-coin-head.png
-images/coins/tails/dime-coin-tail.png
+# images/coins/heads/dime-coin-head.png
+# images/coins/tails/dime-coin-tail.png
 sounds/CoinFlip.ogg
 
 # Download everything if online
