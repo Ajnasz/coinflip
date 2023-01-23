@@ -2,6 +2,8 @@
 (function () {
     "use strict";
     var coin, animating;
+    const soundSrc =  "sounds/CoinFlip.ogg";
+
     const state = { heads: 0, tails: 0};
 
     function byId(id) {
@@ -107,6 +109,14 @@
         return animating;
     }
 
+  function playSound() {
+        const sound = byId('CoinFlipSound');
+        sound.currentTime = 0;
+        sound.pause();
+        sound.src = soundSrc;
+        sound.play();
+  }
+
     function onSurfaceClick(e) {
         e.preventDefault();
         e.stopPropagation();
@@ -117,6 +127,7 @@
 
         const res = isHead();
 
+        playSound();
         if (res) {
             state.heads += 1;
             head();
