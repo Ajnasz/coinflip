@@ -6,6 +6,7 @@
   "fullscreen": "true",
   "appcache_path": "/coinflip.appcache",
   "icons": {
+    "512": "/images/icon-512.png",
     "256": "/images/icon-256.png",
     "128": "/images/icon-128.png",
     "120": "/images/icon-120.png",

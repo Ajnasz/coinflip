@@ -1,17 +1,19 @@
 <!DOCTYPE HTML>
-<html manifest="coinflip.appcache">
+<html manifest="coinflip.appcache" lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta name="viewport" content="width=device-width">
     <link rel="manifest" href="manifest.json">
     <title>Coin flip</title>
+    <meta name="description" content="Coinflip mobile app to help making decisions"></meta>
+    <meta name="theme-color" content="#333333">
     <style type="text/css">
         @import url(style.css);
     </style>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-<div id="Surface">
+<div id="Surface" tabindex="0">
     <div id="Coin">
         <div class="coin-side" id="CoinHead"></div>
         <div class="coin-side" id="CoinTail"></div>
