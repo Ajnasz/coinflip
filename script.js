@@ -1,10 +1,22 @@
 /*jslint browser: true*/
 (function () {
     "use strict";
-    var coin, animating;
+    let coin;
+    let animating;
     const soundSrc =  "sounds/CoinFlip.ogg";
 
-    const state = { heads: 0, tails: 0};
+    const storeHeads = Number.parseInt(localStorage.getItem('coin-flip-heads'), 10);
+    const storeTails = Number.parseInt(localStorage.getItem('coin-flip-tails'), 10);
+
+    const storedState = {
+      heads: Number.isNaN(storeHeads) ? 0 : storeHeads,
+      tails: Number.isNaN(storeTails) ? 0 : storeTails,
+    };
+
+    const state = {
+      heads: 0,
+      tails: 0,
+    };
 
     function byId(id) {
         return document.getElementById(id);
@@ -74,9 +86,30 @@
 
     animating = false;
 
+    let currentToss = null;
+
     function updateState() {
-        byId('HeadCount').querySelector('.coin-count').innerText = state.heads;
-        byId('TailCount').querySelector('.coin-count').innerText = state.tails;
+      const head = byId('HeadCount');
+      const tail = byId('TailCount');
+      head.querySelector('.coin-count').innerText = state.heads;
+      tail.querySelector('.coin-count').innerText = state.tails;
+      head.querySelector('.coin-count-history').innerText = storedState.heads;
+      tail.querySelector('.coin-count-history').innerText = storedState.tails;
+      const sum = storedState.heads + storedState.tails;
+      const headsPercent = (storedState.heads / sum) * 100;
+      const tailsPercent = (storedState.tails / sum) * 100;
+      if (isNaN(headsPercent) || isNaN(tailsPercent)) {
+        return
+    }
+      head.querySelector('.progress-num').innerText = Math.round(headsPercent) + '%';
+      tail.querySelector('.progress-num').innerText = Math.round(tailsPercent) + '%';
+      head.querySelector('.progress').style.width = headsPercent + '%';
+      tail.querySelector('.progress').style.width = tailsPercent + '%';
+      // if (currentToss !== null) {
+      //   byId('CurrentToss').querySelector('.coin-side').classList.remove('coin-head', 'coin-tail', 'coin-head-200ft', 'coin-tail-200ft');
+      //   const coinClass = currentToss ? 'coin-head' : 'coin-tail';
+      //   byId('CurrentToss').querySelector('.coin-side').classList.add(coinClass, coinClass + '-200ft');
+      // }
     }
 
     function enableFlip() {
@@ -96,13 +129,13 @@
         return animating;
     }
 
-  function playSound() {
-        const sound = byId('CoinFlipSound');
-        sound.currentTime = 0;
-        sound.pause();
-        sound.src = soundSrc;
-        sound.play();
-  }
+    function playSound() {
+      const sound = byId('CoinFlipSound');
+      sound.currentTime = 0;
+      sound.pause();
+      sound.src = soundSrc;
+      sound.play();
+    }
 
     function onSurfaceClick(e) {
         e.preventDefault();
@@ -114,14 +147,21 @@
 
         const res = isHead();
 
+        currentToss = res;
+
         playSound();
         if (res) {
             state.heads += 1;
+            storedState.heads += 1;
+            localStorage.setItem('coin-flip-heads', storedState.heads);
             head();
         } else {
             state.tails += 1;
+            storedState.tails += 1;
+            localStorage.setItem('coin-flip-tails', storedState.tails);
             tail();
         }
+
 
         disableFlip();
     }
@@ -131,5 +171,6 @@
         onClick('Surface', onSurfaceClick);
         onTouchStart('Surface', onSurfaceClick);
         onAnimationEnd('Coin', onAnimationEndCb);
+        updateState();
     }, false);
 }());
