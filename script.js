@@ -1,29 +1,43 @@
 /*jslint browser: true*/
-(function () {
+(function() {
     "use strict";
     let coin;
     let animating;
-    const soundSrc =  "sounds/CoinFlip.ogg";
+    const soundSrc = "sounds/CoinFlip.ogg";
 
     const storeHeads = Number.parseInt(localStorage.getItem('coin-flip-heads'), 10);
     const storeTails = Number.parseInt(localStorage.getItem('coin-flip-tails'), 10);
 
     const storedState = {
-      heads: Number.isNaN(storeHeads) ? 0 : storeHeads,
-      tails: Number.isNaN(storeTails) ? 0 : storeTails,
+        heads: Number.isNaN(storeHeads) ? 0 : storeHeads,
+        tails: Number.isNaN(storeTails) ? 0 : storeTails,
     };
 
     const state = {
-      heads: 0,
-      tails: 0,
+        heads: 0,
+        tails: 0,
     };
 
     function byId(id) {
         return document.getElementById(id);
     }
 
+    function setText(text, selector, parent = document) {
+        const element = (parent || document).querySelector(selector);
+        if (element) {
+            element.innerText = text;
+        }
+    }
+
+    function setWidth(width, selector, parent = document) {
+        const element = (parent || document).querySelector(selector);
+        if (element) {
+            element.style.width = width;
+        }
+    }
+
     function listen(elem, event, cb) {
-        elem.addEventListener(event, cb, false);
+        elem.addEventListener(event, cb);
     }
 
     function onClick(elem, cb) {
@@ -42,7 +56,7 @@
             'MSAnimationEnd',
             'oAnimationEnd',
             'oanimationend'
-        ].forEach(function (ev) {
+        ].forEach(function(ev) {
             listen(byId(elem), ev, cb);
         });
     }
@@ -65,7 +79,7 @@
     function changeClasses(add) {
         setStartState();
         resetCoin();
-        setTimeout(function () {
+        setTimeout(function() {
             coin.classList.add(add);
         }, 100);
     }
@@ -79,37 +93,45 @@
     }
 
     function isHead() {
-        var rand = Math.floor(Math.random() * 10);
+        var rand = Math.floor(Math.random() * 2);
 
-        return Boolean(rand % 2);
+        return Boolean(rand);
     }
 
     animating = false;
 
     let currentToss = null;
 
-    function updateState() {
-      const head = byId('HeadCount');
-      const tail = byId('TailCount');
-      head.querySelector('.coin-count').innerText = state.heads;
-      tail.querySelector('.coin-count').innerText = state.tails;
-      head.querySelector('.coin-count-history').innerText = storedState.heads;
-      tail.querySelector('.coin-count-history').innerText = storedState.tails;
-      const sum = storedState.heads + storedState.tails;
-      const headsPercent = (storedState.heads / sum) * 100;
-      const tailsPercent = (storedState.tails / sum) * 100;
-      if (isNaN(headsPercent) || isNaN(tailsPercent)) {
-        return
+    function setProgress(percent, parent) {
+        setWidth(percent + '%', ' .progress', parent);
+        setText(percent + '%', ' .progress-num', parent);
     }
-      head.querySelector('.progress-num').innerText = Math.round(headsPercent) + '%';
-      tail.querySelector('.progress-num').innerText = Math.round(tailsPercent) + '%';
-      head.querySelector('.progress').style.width = headsPercent + '%';
-      tail.querySelector('.progress').style.width = tailsPercent + '%';
-      // if (currentToss !== null) {
-      //   byId('CurrentToss').querySelector('.coin-side').classList.remove('coin-head', 'coin-tail', 'coin-head-200ft', 'coin-tail-200ft');
-      //   const coinClass = currentToss ? 'coin-head' : 'coin-tail';
-      //   byId('CurrentToss').querySelector('.coin-side').classList.add(coinClass, coinClass + '-200ft');
-      // }
+
+    function calculatePercent(heads, tails) {
+        return Math.min(100, Math.round((heads / (heads + tails)) * 100) || 0);
+    }
+
+    function setStat(count, percent, parent) {
+        setText(count, '.coin-count', parent);
+        setProgress(percent, parent);
+    }
+
+    function updateStateUI(state, parent) {
+        const head = parent.querySelector('.head');
+        const tails = parent.querySelector('.tails');
+        setStat(state.heads, calculatePercent(state.heads, state.tails), head);
+        setStat(state.tails, calculatePercent(state.tails, state.heads), tails);
+    }
+
+    function updateState() {
+        updateStateUI(state, byId('CurrentStats'));
+        updateStateUI(storedState, byId('HistoryStats'));
+
+        if (currentToss !== null) {
+            const text = currentToss ? 'Heads' : 'Tails';
+            setText(text, '#CurrentToss');
+            byId('CurrentToss').style.display = 'block';
+        }
     }
 
     function enableFlip() {
@@ -117,8 +139,8 @@
     }
 
     function onAnimationEndCb() {
-      enableFlip();
-      updateState();
+        enableFlip();
+        updateState();
     }
 
     function disableFlip() {
@@ -130,11 +152,11 @@
     }
 
     function playSound() {
-      const sound = byId('CoinFlipSound');
-      sound.currentTime = 0;
-      sound.pause();
-      sound.src = soundSrc;
-      sound.play();
+        const sound = byId('CoinFlipSound');
+        sound.currentTime = 0;
+        sound.pause();
+        sound.src = soundSrc;
+        sound.play();
     }
 
     function onSurfaceClick(e) {
@@ -166,11 +188,44 @@
         disableFlip();
     }
 
-    listen(window, 'load', function () {
+    function toggleStats(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const hasStats = byId('Surface').dataset.hasStats === 'true';
+
+        byId('Surface').dataset.hasStats = hasStats ? 'false' : 'true';
+    }
+
+    function clearStats(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        localStorage.removeItem('coin-flip-heads');
+        localStorage.removeItem('coin-flip-tails');
+        storedState.heads = 0;
+        storedState.tails = 0;
+        updateState();
+    }
+
+    function clearCurrentStats(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        state.heads = 0;
+        state.tails = 0;
+        updateState();
+    }
+
+
+    listen(window, 'load', function() {
         coin = byId('Coin');
+        onClick('ToggleStats', toggleStats);
+        onTouchStart('ToggleStats', toggleStats);
         onClick('Surface', onSurfaceClick);
         onTouchStart('Surface', onSurfaceClick);
         onAnimationEnd('Coin', onAnimationEndCb);
+        onClick('ClearStats', clearStats);
+        onTouchStart('ClearStats', clearStats);
+        onClick('ClearCurrentStats', clearCurrentStats);
+        onTouchStart('ClearCurrentStats', clearCurrentStats);
         updateState();
     }, false);
 }());

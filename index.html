@@ -1,55 +1,82 @@
 <!DOCTYPE HTML>
 <html manifest="coinflip.appcache" lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <link rel="manifest" href="manifest.json">
-    <title>Coin flip</title>
-    <meta name="description" content="Coinflip mobile app to help making decisions"></meta>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preload" href="images/coins/heads/200ft-fej.webp" as="image">
-    <link rel="preload" href="images/coins/tails/200ft-iras.webp" as="image">
-    <meta name="theme-color" content="#333333">
-    <script src="script.js" defer></script>
-</head>
-<body>
-<div id="Surface" tabindex="0">
-    <div id="Coin">
-        <div class="coin-side coin-head coin-head-200ft" id="CoinHead"></div>
-        <div class="coin-side coin-tail coin-tail-200ft" id="CoinTail"></div>
-        <audio id="CoinFlipSound" preload="auto">
-            <source src="sounds/CoinFlip.ogg" type="audio/ogg" />
-        </audio>
-    </div>
-    <footer id="Footer">
-
-      <div id="History">
-        <!-- <div class="coin" id="CurrentToss"> -->
-        <!--   <div class="coin-side"></div> -->
-        <!-- </div> -->
-        <div class="coin" id="HeadCount">
-          <div class="coin-side coin-head coin-head-200ft"></div>
-            <div>
-              <span class="coin-count">0</span>
-              (<span class="coin-count-history">0</span> sum)
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="manifest" href="manifest.json">
+        <title>Coin flip</title>
+        <meta name="description" content="Coinflip mobile app to help making decisions"></meta>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preload" href="images/coins/heads/200ft-fej.webp" as="image">
+        <link rel="preload" href="images/coins/tails/200ft-iras.webp" as="image">
+        <meta name="theme-color" content="#333333">
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <div id="Surface" tabindex="0" data-has-stats="false">
+            <button type="button" class="btn" id="ToggleStats">
+                <span id="ToggleStatsText">Show statistics</span>
+                <span id="ToggleStatsTextHidden">Hide statistics</span>
+            </button>
+            <div id="Coin">
+                <div class="coin-side coin-head coin-head-200ft" id="CoinHead"></div>
+                <div class="coin-side coin-tail coin-tail-200ft" id="CoinTail"></div>
+                <audio id="CoinFlipSound" preload="auto">
+                    <source src="sounds/CoinFlip.ogg" type="audio/ogg" />
+                </audio>
             </div>
-            <div class="progress-bar">
-              <div class="progress">
-              </div>
-            </div>
-            <div class="progress-num"></div>
-        </div>
-        <div class="coin" id="TailCount">
-          <div class="coin-side coin-tail coin-tail-200ft"></div>
-            <div><span class="coin-count">0</span> /
-              (<span class="coin-count-history">0</span> sum)</div>
-            <div class="progress-bar">
-              <div class="progress">
-              </div>
-            </div>
-            <div class="progress-num"></div>
-        </div>
-      </div>
-    </footer>
-</body>
+            <footer id="Footer">
+                <div class="history" id="CurrentStats">
+                    <button id="ClearCurrentStats" type="button" class="btn">
+                        <span class="clear-button-text">Clear current stats</span>
+                    </button>
+                    <div class="history-content">
+                        <div class="coin head" id="HeadCount">
+                            <div class="coin-side coin-head coin-head-200ft"></div>
+                            <div class="coin-count">0</div>
+                            <div id="CurrentProgressHead" class="progress-container">
+                                <div class="progress-bar"><div class="progress"></div>
+                                </div>
+                                <div class="progress-num"></div>
+                            </div>
+                        </div>
+                        <div id="CurrentToss"></div>
+                        <div class="coin tails" id="TailCount">
+                            <div class="coin-side coin-tail coin-tail-200ft"></div>
+                            <div class="coin-count">0</div>
+                            <div id="CurrentProgressTail" class="progress-container">
+                                <div class="progress-bar"><div class="progress"></div>
+                                </div>
+                                <div class="progress-num"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="history" id="HistoryStats">
+                    <button id="ClearStats" type="button" class="btn">
+                        <span class="clear-button-text">Clear statistics</span>
+                    </button>
+                    <div class="history-content">
+                        <div class="coin head" id="HistoryHeadCount">
+                            <h2 class="history-title">Heads</h2>
+                            <div class="coin-count">0</div>
+                            <div id="ProgressHead" class="progress-container">
+                                <div class="progress-bar"><div class="progress"></div>
+                                </div>
+                                <div class="progress-num"></div>
+                            </div>
+                        </div>
+                        <div class="coin tails" id="HistoryTailCount">
+                            <h2 class="history-title">Tails</h2>
+                            <div class="coin-count">0</div>
+                            <div id="ProgressTail" class="progress-container">
+                                <div class="progress-bar"><div class="progress"></div>
+                                </div>
+                                <div class="progress-num"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+    </body>
 </html>
