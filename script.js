@@ -123,6 +123,19 @@
         setStat(state.tails, calculatePercent(state.tails, state.heads), tails);
     }
 
+    // when heads/tails are PIish numbers, show the magic effect easter egg
+    function getMagicClass(state) {
+        if (state.heads === 3 && state.tails === 1) {
+            return ['magic', 'magic-color'];
+        }
+
+        if (state.heads === 1 && state.tails === 3) {
+            return ['magic', 'magic-color2'];
+        }
+
+        return [];
+    }
+
     function updateState() {
         updateStateUI(state, byId('CurrentStats'));
         updateStateUI(storedState, byId('HistoryStats'));
@@ -132,6 +145,9 @@
             setText(text, '#CurrentToss');
             byId('CurrentToss').style.display = 'block';
         }
+
+        byId('Surface').classList.remove('magic', 'magic-color', 'magic-color2');
+        byId('Surface').classList.add(...getMagicClass(state));
     }
 
     function enableFlip() {
