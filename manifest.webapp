@@ -1,7 +1,7 @@
 {
   "name": "Coin flip",
   "description": "App to help making decisions",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "launch_path": "/index.html",
   "fullscreen": "true",
   "appcache_path": "/coinflip.appcache",
@@ -12,7 +12,7 @@
     "120": "/images/icon-120.png",
     "60": "/images/icon-60.png",
     "32": "/images/icon-32.png",
-    "90": "/images/icon-60.png"
+    "90": "/images/icon-90.png"
   },
   "developer": {
     "name": "Lajos Koszti",
