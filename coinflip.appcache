@@ -1,9 +1,11 @@
 CACHE MANIFEST
-# V1.1.19 - 2023-01-23 08:31
+# V1.2.1 - 2026-11-20 09:20
 style.css
 script.js
-images/coins/heads/dime-coin-head.webp
-images/coins/tails/dime-coin-tail.webp
+images/coins/tails/200ft-iras.webp
+images/coins/heads/200ft-fej.webp
+# images/coins/heads/dime-coin-head.webp
+# images/coins/tails/dime-coin-tail.webp
 # images/coins/heads/dime-coin-head.png
 # images/coins/tails/dime-coin-tail.png
 sounds/CoinFlip.ogg
@@ -15,5 +17,6 @@ NETWORK:
 # Load this page if no content
 FALLBACK:
 / offline.html
-images/coins/heads/ images/coins/heads/dime-coin-head.png
-images/coins/tails/ images/coins/tails/dime-coin-tail.png
+images/coins/heads/ images/coins/heads/200ft-fej.webp
+images/coins/tails/ images/coins/tails/200ft-iras.webp
+
